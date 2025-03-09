@@ -1,7 +1,12 @@
-from langchain_openai import ChatOpenAI
+from langchain_anthropic import ChatAnthropic
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+# Claude-3 Sonnet を使用するように設定
+llm = ChatAnthropic(
+    model="claude-3-sonnet-20240229",
+    temperature=0,
+    max_tokens=1000
+)
 
 messages = [
     SystemMessage(content="You are a helpful assistant that can answer questions."),
