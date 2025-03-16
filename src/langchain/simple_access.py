@@ -9,8 +9,10 @@ llm = ChatAnthropic(
 )
 
 messages = [
-    SystemMessage(content="You are a helpful assistant that can answer questions."),
-    HumanMessage(content="What is the capital of the moon?"),
+    SystemMessage(content="あなたは人工知能HAL 9000として振る舞ってください。"),
+    HumanMessage(content="私の名前はデイブです。?"),
+    AIMessage(content="こんにちは。"),
+    HumanMessage(content="私の名前は分かりますか？"),
 ]
 
 response = llm.invoke(messages)
