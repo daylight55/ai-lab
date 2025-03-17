@@ -95,7 +95,7 @@ class RAGPipeline:
         }
 
     # ルーターからの条件付きエッジ
-    def edge_router(self, state: Dict) -> str:
+    def conditional_edge_score_retry(self, state: Dict) -> str:
         """次のステップを決定する"""
         score = state["relevance_score"]
         attempt = state["attempt"]
@@ -156,7 +156,7 @@ class RAGPipeline:
         workflow.add_edge("retrieve", "evaluate")
         workflow.add_conditional_edges(
             "evaluate",
-            self.edge_router,
+            self.conditional_edge_score_retry,
             {
                 "retry_retrieve": "retrieve",
                 "final_answer": "generate"
